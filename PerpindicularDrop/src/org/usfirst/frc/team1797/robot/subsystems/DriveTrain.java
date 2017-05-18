@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1797.robot.subsystems;
 
+import org.usfirst.frc.team1797.robot.RobotMap;
 import org.usfirst.frc.team1797.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -49,11 +50,13 @@ public class DriveTrain extends Subsystem {
 	public void drop() {
 		dropPiston.set(DoubleSolenoid.Value.kForward);
 		lastAct = System.currentTimeMillis();
+		RobotMap.DRIVETRAIN.dropDown = true;
 	}
 
 	public void pistonUp() {
 		dropPiston.set(DoubleSolenoid.Value.kReverse);
 		lastAct = System.currentTimeMillis();
+		RobotMap.DRIVETRAIN.dropDown = false;
 	}
 
 	public void stopPiston() {
