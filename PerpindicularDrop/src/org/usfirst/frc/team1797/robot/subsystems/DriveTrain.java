@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	VictorSP left1, left2, right1, right2, dropWheel;
 	DoubleSolenoid dropPiston;
 	long lastAct;
 	public boolean dropDown;
-	public DriveTrain(){
+
+	public DriveTrain() {
 		left1 = new VictorSP(0);
 		left2 = new VictorSP(1);
 		right1 = new VictorSP(2);
@@ -27,42 +28,50 @@ public class DriveTrain extends Subsystem {
 		lastAct = Long.MAX_VALUE;
 		dropDown = false;
 	}
-	public void setLeft(double x){
+
+	public void setLeft(double x) {
 		left1.set(x);
 		left2.set(x);
 	}
-	public void setRight(double x){
+
+	public void setRight(double x) {
 		right1.set(x);
 		right2.set(x);
 	}
-	public void stopDrive(){
+
+	public void stopDrive() {
 		left1.set(0);
 		left2.set(0);
 		right1.set(0);
 		right2.set(0);
 	}
-	public void drop(){
+
+	public void drop() {
 		dropPiston.set(DoubleSolenoid.Value.kForward);
 		lastAct = System.currentTimeMillis();
 	}
-	public void pistonUp(){
+
+	public void pistonUp() {
 		dropPiston.set(DoubleSolenoid.Value.kReverse);
 		lastAct = System.currentTimeMillis();
 	}
-	public void stopPiston(){
+
+	public void stopPiston() {
 		dropPiston.set(DoubleSolenoid.Value.kOff);
 		lastAct = Long.MAX_VALUE;
 	}
-	public void setDropWheel(double x){
+
+	public void setDropWheel(double x) {
 		dropWheel.set(x);
 	}
-	public long getLastAct(){
+
+	public long getLastAct() {
 		return lastAct;
 	}
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveCommand());
-    }
-}
 
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new DriveCommand());
+	}
+}

@@ -12,15 +12,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	private Joystick joy;
 	private JoystickButton dropButton;
-	public OI(){
+
+	public OI() {
 		joy = new Joystick(0);
-		 dropButton = new JoystickButton(joy, 0);
-		 dropButton.whenPressed(new DropCommand());
+		dropButton = new JoystickButton(joy, 0);
+		dropButton.whenPressed(new DropCommand());
 	}
-	public Joystick getJoy(){
+
+	public Joystick getJoy() {
 		return joy;
 	}
-	
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
